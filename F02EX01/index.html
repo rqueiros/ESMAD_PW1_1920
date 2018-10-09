@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F02EX01</title>
+    <script src="js/vue.js"></script>
+</head>
+
+<body>
+    <div id="intro">
+        <h1>PRODUTO</h1>
+        <button v-bind:disabled="number == 0" v-on:click="down">-</button>
+        <span>{{number}}</span>
+        <button v-on:click="up">+</button>
+        <h2 v-if="number==0">NÚMERO INVÁLIDO</h2>
+    </div>
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

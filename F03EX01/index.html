@@ -11,15 +11,13 @@
 
 <body>
     <div id="intro">
-        <h1>PESSOA</h1>
-        <span>{{person}}</span> 
-        
-        <span>{{dataPerson()}}</span> 
-        <span>{{dataPerson()}}</span> 
-
-        <span>{{dataPersonComputed}}</span> 
-        <span>{{dataPersonComputed}}</span> 
-
+        <p>Pessoas: {{ person }}</p>
+        <p>{{ dataPerson() }}</p>
+        <p>{{ dataPerson() }}</p>
+        <p>{{ dataPersonComputed }}</p>
+        <p>{{ dataPersonComputed }}</p>
+        <p>{{ fullNameComputed }}</p>
+        <p>{{ person.balance | formatBalance() }}</p>
     </div>
     <script src="js/vue-instance.js"></script>
 </body>

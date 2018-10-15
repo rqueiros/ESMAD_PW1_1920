@@ -10,13 +10,15 @@
 </head>
 
 <body>
-    <div id="intro">       
-        <p v-bind:style="{color: textColor, 'background-color': backColor}">{{msg}}</p> 
-        
+    <div id="intro">
+        <p v-bind:style="{color: textColor, 'background-color': backColor, 'font-Size': fontSize+'px', visibility: show}">
+            {{msg}}
+        </p>
+
         <button @click="formatTextColor('red')">RED</button>
-        <button>BIG</button>
-        <button  @click="formatBackColor('yellow')">YELLOW</button>
-        <button>SHOW/HIDE</button>
+        <button @click="formatSizeText(30)">BIG</button>
+        <button @click="formatBackColor('yellow')">YELLOW</button>
+        <button @click="showHide()">SHOW/HIDE</button>
 
     </div>
     <script src="js/vue-instance.js"></script>

@@ -7,20 +7,35 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>F04EX03</title>
     <script src="js/vue.js"></script>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse
+        }
+    </style>
 </head>
 
 <body>
     <div id="intro">
-        
-
+        <ul>
             <li v-for="team in teams">
-               Name: {{team.name}} AND year: {{team.year}}
-
-
-
+                Name: {{team.name}} AND year: {{team.year}}
             </li>
         </ul>
-       
+        <table>
+            <tr>
+                <th>#</th>
+                <th>Name</th>
+                <th>Year</th>
+            </tr>
+            <tr v-for="(team,index) in listFilterTeams">
+                <td>{{index+1}}</td>
+                <td>{{team.name}}</td>
+                <td>{{team.year}}</td>
+            </tr>
+        </table>
+        <button v-on:click="addTeam('Braga', 1923)">ADD TEAM</button>
+        <button v-on:click="filterTeams('Lisboa')">FILTER TEAMS FROM LISBOA</button>
     </div>
     <script src="js/vue-instance.js"></script>
 </body>

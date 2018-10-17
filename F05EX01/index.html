@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>F05EX01</title>
+    <script src="js/vue.js"></script>    
+</head>
+
+<body>
+    <div id="intro">
+        <!-- B/C -->
+        <button v-on:click="showMessage">VIEW MESSAGE</button>
+        <!-- Di -->
+        <div v-on:click="showMessage">
+            <button v-on:click="showMessage">CLICA-ME (BUBBLING)</button>
+        </div>
+        <!-- Dii -->
+        <div v-on:click="showMessage">
+            <button v-on:click.stop="showMessage">CLICA-ME (STOP)</button>
+        </div>
+        <!-- Diii -->
+        <div>
+            <button v-on:click.stop.once="showMessage">CLICA-ME (UMA VEZ)</button>
+        </div>
+        <!-- Div -->
+        <div>
+            <button v-on:keyup.tab="showMessage">CLICA-ME (TAB)</button>
+        </div>
+    </div>
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

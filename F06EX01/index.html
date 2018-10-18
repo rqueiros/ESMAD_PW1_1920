@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyToDo</title>
+    <script src="js/vue.js"></script>
+    <style>
+        table,
+        tr,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>MyToDo</h1>
+    <div id="intro">
+        <!--TASK-->
+        <label for="txtTask">TASK:</label>
+        <input id="txtTask" v-model="task">
+        <!--TYPE-->
+        <input id="rdPersonal" type="radio" v-model="type" value="personal">
+        <label for="rdPersonal">PERSONAL</label>
+        <input id="rdprofissional" type="radio" v-model="type" value="profissional">
+        <label for="rdProfissional">PROFISSIONAL</label>
+        <!-- BUTTON -->
+        <br><br>
+        <button @click="addTask">ADD TASK</button>
+        <br><br>
+        <!--TABLE-->
+        <span v-if="tasks.length==0">NO TASKS!!</span>
+        <div v-else>
+            <select v-model="filterType">
+                <option value="all">all</option>
+                <option value="personal">personal</option>
+                <option value="profissional">profissional</option>
+            </select>
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>TASK</th>
+                    <th>TYPE</th>
+                    <th>OPTIONS</th>
+                </tr>
+                <tr v-for="(task, index) in filteredTasks">
+                    <td>{{index+1}}</td>
+                    <td>{{task.name}}</td>
+                    <td>{{task.type}}</td>
+                    <td><button @click="removeTask(index)">REMOVE</button></td>
+                </tr>
+            </table>
+        </div>
+
+    </div>
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

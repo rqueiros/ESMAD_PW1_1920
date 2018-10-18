@@ -16,8 +16,7 @@ const vm = new Vue({
         addTask() {
 
             this.tasks.push({ name: this.task, type: this.type })
-            // Save local storage
-            localStorage.setItem("tasks",JSON.stringify(this.tasks))
+           
         },
         removeTask(index) {
             this.tasks.splice(index, 1)
@@ -32,3 +31,7 @@ const vm = new Vue({
     }
 })
 
+window.onunload = function () {    
+     // Save local storage
+     localStorage.setItem("tasks",JSON.stringify(this.tasks))
+};

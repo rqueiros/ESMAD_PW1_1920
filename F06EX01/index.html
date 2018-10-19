@@ -21,25 +21,26 @@
 <body>
     <h1>MyToDo</h1>
     <div id="intro">
-        <!--TASK-->
+        <!-- TASK -->
         <label for="txtTask">TASK:</label>
         <input id="txtTask" v-model="task">
-        <!--TYPE-->
-        <input id="rdPersonal" type="radio" v-model="type" value="personal">
+        <!-- PERSONAL -->
+        <input v-model="type" id="rdPersonal" type="radio" value="personal">
         <label for="rdPersonal">PERSONAL</label>
-        <input id="rdprofissional" type="radio" v-model="type" value="profissional">
-        <label for="rdProfissional">PROFISSIONAL</label>
-        <!-- BUTTON -->
-        <br><br>
-        <button @click="addTask">ADD TASK</button>
-        <br><br>
-        <!--TABLE-->
-        <span v-if="tasks.length==0">NO TASKS!!</span>
+        <!-- PROFISSIONAL -->
+        <input v-model="type" id="rdProfessional" type="radio" value="professional">
+        <label for="rdProfessional">PROFESSIONAL</label>
+        <br>
+        <button v-on:click="addTask" v-bind:disabled="task.length==0">ADD TASK</button><br>
+
+        <br>
+        <span v-if="tasks.length==0">NO TASKS</span>
         <div v-else>
-            <select v-model="filterType">
-                <option value="all">all</option>
-                <option value="personal">personal</option>
-                <option value="profissional">profissional</option>
+            <label for="sltFilter">FILTER: </label>
+            <select id="sltFilter" v-model="filter">
+                <option value="all">ALL</option>
+                <option value="personal">PERSONAL</option>
+                <option value="professional">PROFESSIONAL</option>
             </select>
             <table>
                 <tr>
@@ -52,7 +53,9 @@
                     <td>{{index+1}}</td>
                     <td>{{task.name}}</td>
                     <td>{{task.type}}</td>
-                    <td><button @click="removeTask(index)">REMOVE</button></td>
+                    <td>
+                        <button v-on:click="removeTask(index)">REMOVE</button>
+                    </td>
                 </tr>
             </table>
         </div>

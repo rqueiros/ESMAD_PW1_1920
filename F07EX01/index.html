@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>MyTravels</title>
+    <script src="js/vue.js"></script>
+    <style>
+        table,
+            tr,
+            th,
+            td {
+                border: 1px solid black;
+                border-collapse: collapse;
+            }
+        </style>
+</head>
+
+<body>
+    <h1>MyTravels</h1>
+    <div id="intro">
+        <!-- CONTINENT -->
+        <label for="txtContinent">CONTINENT:</label>
+        <select id="sltContinent" v-model="continent">
+            <option value="all">ALL</option>
+            <option value="europa">EUROPA</option>
+            <option value="africa">ÁFRICA</option>
+            <option value="asia">ÁSIA</option>
+            <option value="america">AMÉRICA</option>
+            <option value="oceania">OCEANIA</option>
+        </select>
+
+        <!-- COUNTRY -->
+        <label for="txtCountry">COUNTRY:</label>
+        <input id="txtCountry" type="text" v-model="country">
+        <br><br>
+
+        <!-- CITIES -->
+        <label for="txtCities">CITIES:</label>
+        <input id="txtCities" type="text" v-model="cities" placeholder="please separate the cities with a comma">
+        <br><br>
+        <!-- DESCRIPTION -->
+        <label for="txtDesc">DESCRIPTION:</label>
+        <textarea id="txtDesc" v-model="description"></textarea>
+        <br><br>
+        <!-- START DATE -->
+        <label for="txtStartDate">START DATE:</label>
+        <input id="txtStartDate" type="date" v-model="startDate">
+        <br><br>
+        <!-- END DATE -->
+        <label for="txtEndDate">END DATE:</label>
+        <input id="txtEndDate" type="date" v-model="endDate">
+        <br><br>
+        <!-- TYPE -->
+        <input v-model="type" id="rdHolidays" type="radio" value="holidays">
+        <label for="rdHolidays">HOLIDAYS</label>
+        <input v-model="type" id="rdBusiness" type="radio" value="business">
+        <label for="rdBusiness">BUSINESS</label>
+        <br><br>
+        <!-- LINK -->
+        <label for="txtPhoto">PHOTO:</label>
+        <input id="txtPhoto" type="text" v-model="photo">
+
+        <br><br>
+        <button v-on:click="addTravel">ADD TRAVEL</button>
+        <button>FIND TRAVEL</button>
+        <br>
+
+        <span v-if="this.travels.length===0">NO TRAVELS</span>
+        <div v-else>
+            <span>LIST OF TRAVELS</span>
+
+            <table>
+                <tr>
+                    <th>#</th>
+                    <th>COUNTRY</th>
+                    <th>TYPE</th>
+                    <th>ACTIONS</th>
+                </tr>
+                <tr v-for="(travel, index) in filteredTravels">
+                    <td>{{travel.id}}</td>
+                    <td>{{travel.country}}</td>
+                    <td>{{travel.type}}</td>
+                    <td>
+                        <button v-on:click="editTravel()">EDIT</button>
+                        <button v-on:click="removeTravel(travel.id)">REMOVE</button>
+
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+
+    </div>
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

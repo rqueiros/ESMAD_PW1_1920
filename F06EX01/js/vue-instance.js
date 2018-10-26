@@ -1,6 +1,7 @@
 const vm = new Vue({
     el: "#intro",
     data: {
+        id:0,
         task: "",
         type: "personal",
         filter: "all",
@@ -16,17 +17,34 @@ const vm = new Vue({
     },
 
     methods: {
+        getLastId() {
+            if(this.tasks.length)
+                return this.tasks[this.tasks.length-1].id
+            else
+                return 0
+        },
         // Add unique tasks
         addTask() {
             if (!this.tasks.some((task) => task.name === this.task)) {
-                this.tasks.push({ name: this.task, type: this.type })
+                this.tasks.push(
+                    { 
+                        id: this.getLastId() + 1,
+                        name: this.task, 
+                        type: this.type 
+                    }
+                )
             } else {
                 alert("The task is already added!")
             }
         },
         // Remove task by its position in the array
-        removeTask(index) {
-            this.tasks.splice(index, 1)
+        removeTask(id) {
+            
+            this.tasks = this.tasks.filter(
+                (task) => task.id !== id
+            )
+
+            
         },
         // Save tasks in the localstorage
         saveStorage() {            

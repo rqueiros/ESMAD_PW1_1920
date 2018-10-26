@@ -50,11 +50,11 @@
                     <th>OPTIONS</th>
                 </tr>
                 <tr v-for="(task, index) in filteredTasks">
-                    <td>{{index+1}}</td>
+                    <td>{{task.id}}</td>
                     <td>{{task.name}}</td>
                     <td>{{task.type}}</td>
                     <td>
-                        <button v-on:click="removeTask(index)">REMOVE</button>
+                        <button v-on:click="removeTask(task.id)">REMOVE</button>
                     </td>
                 </tr>
             </table>

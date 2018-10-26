@@ -70,17 +70,33 @@
 
         <span v-if="this.travels.length===0">NO TRAVELS</span>
         <div v-else>
+            <hr>
+            <!-- FILTERS -->
+            <!-- CONTINENT -->
+            <label for="txtFilterContinent">CONTINENT:</label>
+            <input id="txtFilterContinent" type="text" v-model.lazy="filterContinent">
+            <!-- START DATE -->
+            <label for="txtFilterStartDate">START DATE:</label>
+            <input id="txtFilterStartDate" type="date" v-model.lazy="filterStartDate">
+            <!-- END DATE -->
+            <label for="txtFilterEndDate">END DATE:</label>
+            <input id="txtFilterEndDate" type="date" v-model.lazy="filterEndDate">
+            <hr>
             <span>LIST OF TRAVELS</span>
-
+            <button @click="orderByCountry">ORDER BY COUNTRY</button>
+            <button @click="orderByDate">ORDER BY START ADTE</button>
+            <hr>
             <table>
                 <tr>
                     <th>#</th>
+                    <th>CONTINENT</th>
                     <th>COUNTRY</th>
                     <th>TYPE</th>
                     <th>ACTIONS</th>
                 </tr>
-                <tr v-for="(travel, index) in filteredTravels">
+                <tr v-for="travel in filteredTravels">
                     <td>{{travel.id}}</td>
+                    <td>{{travel.continent}}</td>
                     <td>{{travel.country}}</td>
                     <td>{{travel.type}}</td>
                     <td>

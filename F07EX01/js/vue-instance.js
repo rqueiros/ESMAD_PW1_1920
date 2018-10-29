@@ -15,7 +15,17 @@ const vm = new Vue({
         filterEndDate: "",
         travels: []
     },
+    created() {       
+        // Get travels from the localstorage
+        if (localStorage.getItem("travels")) {
+            this.travels = JSON.parse(localStorage.getItem("travels"))
+        }
+    },
+    destroyed() {
+        localStorage.setItem("travels",JSON.stringify(this.travels))
+    },
     methods: {
+         
         // Get last travel id
         getLastId() {
             return this.travels.length ? this.travels[this.travels.length - 1].id : 0
@@ -33,6 +43,13 @@ const vm = new Vue({
                 type: this.type,
                 photo: this.photo
             })
+        },        
+        // Edit travel (only the country's name) based on its ID
+        editTravel(id) {
+            const index = this.travels.findIndex(
+                (travel) => travel.id === id
+            )
+            this.travels[index].country = prompt("New country?")            
         },
         // Remove travel based on its ID
         removeTravel(id) {
@@ -88,3 +105,8 @@ const vm = new Vue({
         }
     }
 })
+
+
+window.onunload = function () {
+    vm.$destroy()
+}

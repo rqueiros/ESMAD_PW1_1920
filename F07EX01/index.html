@@ -84,7 +84,7 @@
             <hr>
             <span>LIST OF TRAVELS</span>
             <button @click="orderByCountry">ORDER BY COUNTRY</button>
-            <button @click="orderByDate">ORDER BY START ADTE</button>
+            <button @click="orderByDate">ORDER BY START DATE</button>
             <hr>
             <table>
                 <tr>
@@ -100,7 +100,7 @@
                     <td>{{travel.country}}</td>
                     <td>{{travel.type}}</td>
                     <td>
-                        <button v-on:click="editTravel()">EDIT</button>
+                        <button v-on:click="editTravel(travel.id)">EDIT</button>
                         <button v-on:click="removeTravel(travel.id)">REMOVE</button>
 
                     </td>

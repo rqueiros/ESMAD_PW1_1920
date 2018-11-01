@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PortugalCastles</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <script src="js/vue.js"></script>
+    <style>
+        .table {
+            width:50%;
+            text-align: center
+        }
+    </style>
+</head>
+
+<body>
+    <div id="intro" class="container">
+        <div class="jumbotron">
+            <h1 class="display-3">Portugal Castles</h1>
+            <p class="lead">A very simple app for manage castles</p>
+            <hr class="my-2">
+            <p>Add new castle</p>
+            <form @submit.prevent="addCastle">
+                <div class="row">
+                    <div class="col">
+                        <input v-model="form.name" type="text" class="form-control" placeholder="name" required>
+                    </div>
+                    <div class="col">
+                        <input v-model="form.link" value="http://www.xxx.pt" type="url" class="form-control"
+                            placeholder="photo link" required>
+                    </div>
+                </div>
+                <br>
+                <input type="submit" class="btn btn-primary" value="ADD CASTLE">
+            </form>
+            <br>
+
+            <!-- Dialog for edit castle -->
+            <dialog id="editCastleDialog">
+                <form @submit.prevent="updateCastle" method="dialog">
+                    <div class="row">
+                        <div class="col">
+                            <input v-model="form.editName" type="text" class="form-control" placeholder="name" required>
+                        </div>
+                        <div class="col">
+                            <input v-model="form.editLink" type="url" class="form-control" placeholder="photo link"
+                                required>
+                        </div>
+                    </div>
+                    <br>
+                    <button type="submit" class="btn btn-primary">SAVE</button>
+                    <button class="btn btn-primary">CLOSE</button>
+                </form>
+            </dialog>
+
+            <!-- Dialog for view castle -->
+            <dialog id="viewCastleDialog">
+                <div class="text-center">
+                    <p><img v-bind:src="form.link" /></p>
+                    <button @click="closeViewCastle" class="btn btn-primary">CLOSE</button>
+                </div>
+
+            </dialog>
+            <p>
+                    Filter: <input v-model="form.filterName" type="text" class="form-control" placeholder="name">
+            </p>
+            <!--List castles-->
+            <table class="table table-sm text-left">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>ID</th>
+                        <th @click="orderByName">NAME</th>
+                        <th>OPTIONS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr v-for="castle in filteredCastles">
+                        <td scope="row">{{castle.id}}</td>
+                        <td>{{castle.name}}</td>
+                        <td>
+                            <button class="btn btn-primary btn-sm" @click="editCastle(castle.id)">EDIT</button>
+                            <button class="btn btn-primary btn-sm" @click="viewCastle(castle.id)">VIEW</button>
+                            <button class="btn btn-primary btn-sm" @click="removeCastle(castle.id)">REMOVE</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

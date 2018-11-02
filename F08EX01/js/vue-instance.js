@@ -26,8 +26,7 @@ const vm = new Vue({
     },
 
   
-    methods: {
-         
+    methods: {         
         // Get last castle id
         getLastId() {
             return this.castles.length ? this.castles[this.castles.length - 1].id : 0
@@ -88,7 +87,32 @@ const vm = new Vue({
         },
         orderByName() {
             this.castles.sort(this.compareName)
-        },       
+        },    
+        
+        // Array manipulations
+        manipulateArray(op) {
+            let response = ""
+            switch (op) {
+                case "ei":
+                    let str = "Castelo"
+                    this.castles = this.castles.map(
+                        (castle) => {
+                            const newObj =
+                                {
+                                    id: castle.id,
+                                    name: castle.name.substring(castle.name.indexOf(str) + str.length),
+                                    link: castle.link,
+                                    year: castle.year                                      
+                                }
+                            return newObj
+                        }   
+                    )
+                    break;            
+                default:
+                    break;
+            }            
+        }
+
     },
     computed: {
         // Returns a new array of castles based on the user's filter

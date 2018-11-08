@@ -1,11 +1,11 @@
 const vm = new Vue({
     el: "#intro",
-    data: {
-        index: 0,
+    data: {        
         castles: [],
         form: {
             name: "",
             link: "",
+            editId: 0,
             editName: "",
             editLink: "",
             filterName: ""
@@ -80,13 +80,7 @@ const vm = new Vue({
         // Get last castle id
         getLastId() {
             return this.castles.length ? this.castles[this.castles.length - 1].id : 0
-        },
-
-        getIndexById(id) {
-            return this.castles.findIndex(
-                (castle) => castle.id === id
-            )
-        },
+        },      
 
         // Add castle
         addCastle() {
@@ -98,23 +92,28 @@ const vm = new Vue({
         },
         // Edit castle based on its ID
         editCastle(id) {
-            document.getElementById("editCastleDialog").showModal()
-            this.index = this.getIndexById(id)
-            this.form.editName = this.castles[this.index].name
-            this.form.editLink = this.castles[this.index].link
-
-
+            document.getElementById("editCastleDialog").showModal()            
+            const castle = this.castles.filter( castle => castle.id === id)[0]
+            this.form.editId = castle.id
+            this.form.editName = castle.name
+            this.form.editLink = castle.link
         },
+
         updateCastle() {
-            this.castles[this.index].name = this.form.editName
-            this.castles[this.index].link = this.form.editLink
+            this.castles.map(
+                (castle) => {
+                    if(castle.id === this.form.editId) {
+                        castle.name = this.form.editName
+                        castle.link = this.form.editLink
+                    }
+                }
+            )
             document.getElementById("editCastleDialog").close()
         },
 
         // View castle based on its ID
-        viewCastle(id) {
-            this.index = this.getIndexById(id)
-            this.form.link = this.castles[this.index].link
+        viewCastle(id) {            
+            this.form.link = this.castles.filter( castle => castle.id === id)[0].link
             document.getElementById("viewCastleDialog").showModal()
 
         },

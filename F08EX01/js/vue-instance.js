@@ -1,6 +1,6 @@
 const vm = new Vue({
-    el: "#intro",
-    data: {        
+    el: "#app",
+    data: {
         castles: [],
         form: {
             name: "",
@@ -13,65 +13,65 @@ const vm = new Vue({
     },
     created() {
         this.castles = [{
-                id: 1,
-                name: "Castelo de Bragança",
-                link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11021478_789330187780883_1992398901395585075_o.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 2,
-                name: "Almourol",
-                link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11046854_793447744035794_6644364760515171458_o.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 3,
-                name: "Castelo de Marvão",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10649042_702725743107995_1458143537900302356_o.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 4,
-                name: "Castelo de Montalegre",
-                link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11021309_786097224770846_4490230410016196052_o-1-e1485957738973.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 5,
-                name: "Castelo de Sortelha",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/1510562_743660549014514_1798999603922685904_n.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 6,
-                name: "Castelo de Arraiolos",
-                link: "https://i0.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10981073_787377341309501_2130083883941642881_o.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 7,
-                name: "Castelo de Santa Maria da Feira",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10993133_785137361533499_2834769696870331489_o-1.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 8,
-                name: "Castelo de Lindoso",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10854966_780229555357613_3783697791888632461_o.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 9,
-                name: "Castelo dos Mouros",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/casteloguim-1-e1446910277358.jpg?resize=640%2C415",
-                year: 1000
-            },
-            {
-                id: 10,
-                name: "Castelo de Guimarães",
-                link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/casteloguim-1-e1446910277358.jpg?resize=640%2C415",
-                year: 1000
-            }
+            id: 1,
+            name: "Castelo de Bragança",
+            link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11021478_789330187780883_1992398901395585075_o.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 2,
+            name: "Almourol",
+            link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11046854_793447744035794_6644364760515171458_o.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 3,
+            name: "Castelo de Marvão",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10649042_702725743107995_1458143537900302356_o.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 4,
+            name: "Castelo de Montalegre",
+            link: "https://i1.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/11021309_786097224770846_4490230410016196052_o-1-e1485957738973.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 5,
+            name: "Castelo de Sortelha",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/1510562_743660549014514_1798999603922685904_n.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 6,
+            name: "Castelo de Arraiolos",
+            link: "https://i0.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10981073_787377341309501_2130083883941642881_o.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 7,
+            name: "Castelo de Santa Maria da Feira",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10993133_785137361533499_2834769696870331489_o-1.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 8,
+            name: "Castelo de Lindoso",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/10854966_780229555357613_3783697791888632461_o.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 9,
+            name: "Castelo dos Mouros",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/casteloguim-1-e1446910277358.jpg?resize=640%2C415",
+            year: 1000
+        },
+        {
+            id: 10,
+            name: "Castelo de Guimarães",
+            link: "https://i2.wp.com/www.vortexmag.net/wp-content/uploads/2015/04/casteloguim-1-e1446910277358.jpg?resize=640%2C415",
+            year: 1000
+        }
         ]
     },
 
@@ -79,8 +79,12 @@ const vm = new Vue({
     methods: {
         // Get last castle id
         getLastId() {
-            return this.castles.length ? this.castles[this.castles.length - 1].id : 0
-        },      
+
+            if (this.castles.length > 0)
+                return this.castles[this.castles.length - 1].id
+            else
+                return 0
+        },
 
         // Add castle
         addCastle() {
@@ -92,8 +96,9 @@ const vm = new Vue({
         },
         // Edit castle based on its ID
         editCastle(id) {
-            document.getElementById("editCastleDialog").showModal()            
-            const castle = this.castles.filter( castle => castle.id === id)[0]
+            document.getElementById("editCastleDialog").showModal()
+
+            const castle = this.castles.filter(castle => castle.id === id)[0]
             this.form.editId = castle.id
             this.form.editName = castle.name
             this.form.editLink = castle.link
@@ -102,7 +107,7 @@ const vm = new Vue({
         updateCastle() {
             this.castles.map(
                 (castle) => {
-                    if(castle.id === this.form.editId) {
+                    if (castle.id === this.form.editId) {
                         castle.name = this.form.editName
                         castle.link = this.form.editLink
                     }
@@ -112,8 +117,10 @@ const vm = new Vue({
         },
 
         // View castle based on its ID
-        viewCastle(id) {            
-            this.form.link = this.castles.filter( castle => castle.id === id)[0].link
+        viewCastle(id) {
+            this.form.link =
+                this.castles.filter(
+                    (castle) => castle.id === id)[0].link
             document.getElementById("viewCastleDialog").showModal()
 
         },
@@ -140,11 +147,11 @@ const vm = new Vue({
 
         // Array manipulations
         manipulateArray(op) {
-            let response = ""
+            //let response = ""
             switch (op) {
                 case "ei":
                     // Remove the word 'Castelo' from the castle's name
-                    let str = "Castelo"
+                    const str = "Castelo"
                     this.castles = this.castles.map(
                         (castle) => {
                             if (castle.name.indexOf(str) !== -1) {
@@ -156,24 +163,55 @@ const vm = new Vue({
                     break;
                 case "eii":
                     // Calculate the average date for the castles's creation
-                    const averageDate = this.castles.reduce((sum, cur) => sum + cur.year, 0) / this.castles.length
+                    const averageDate = this.castles.reduce(
+                        (sum, cur) => sum + cur.year, 0) / this.castles.length
                     console.log(averageDate)
                     break;
                 case "eiii":
                     // See if there is any castle which includes the word 'Marvão' in his name
-                    const existMarvaoCastle = this.castles.some((castle) => castle.name.includes("Marvão"))
+                    const existMarvaoCastle = this.castles.some(
+                        (castle) => castle.name.includes("Marvão"))
                     console.log(existMarvaoCastle)
                     break;
                 case "eiv":
                     // Get all castles that start by the letter A
                     const letter = "A"
-                    console.log(this.castles.filter((castle) => castle.name.startsWith(letter)))
+                    console.log(this.castles.filter(
+                        (castle) => castle.name.startsWith(letter)))
                     break;
                 case "ev":
                     // Verify that all castles have the link fulfilled                    
-                    console.log(this.castles.every((castle) => castle.link.length !== 0))
+                    console.log(this.castles.every(
+                        (castle) => castle.link.length !== 0))
                     break;
-               
+                case "evi":
+                    // NÃO IMPLEMENTADO                                    
+                    break;
+                case "evii":
+                    const name = "Castelo de Santa Maria da Feira"
+                    console.log(this.castles.find(
+                        (castle) => castle.name === name
+                    ))
+                    break;
+                case "eviii":
+                    const newName = "Castelo de Arraiolos"
+                    console.log(this.castles.findIndex(
+                        (castle) => castle.name === newName
+                    ))
+                    break;
+                case "fi":
+                    this.castles = this.castles.map(
+                        (castle) => castle.name
+                    )
+                    console.log(this.castles.join("-"))
+                    break;
+                case "fii":
+                    this.castles = this.castles.filter(
+                        (castle) => castle.year > 1950                        
+                    )
+                    console.log(this.castles)
+                    break;
+
                 default:
                     break;
             }
@@ -185,11 +223,11 @@ const vm = new Vue({
         filteredCastles() {
             return this.castles.filter(
                 (castle) => {
-                    let filterContinentResult = true
+                    let filterCastleResult = true
                     if (this.form.filterName !== "") {
-                        filterContinentResult = castle.name.includes(this.form.filterName)
+                        filterCastleResult = castle.name.includes(this.form.filterName)
                     }
-                    return filterContinentResult
+                    return filterCastleResult
                 }
             )
         }

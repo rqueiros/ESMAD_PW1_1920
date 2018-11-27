@@ -3,7 +3,7 @@
     <ul class="nav flex-column">
       <li class="nav-item" v-for="persona in personas" :key="persona.id">
         <router-link
-          :to="{name: 'persona-detail', params: {personaId: persona.id, persona: persona}}"
+          :to="{name: 'persona-detail', params: {personaId: persona.id}}"
         >{{persona.name}}</router-link>
       </li>
     </ul>
@@ -42,6 +42,7 @@ export default {
         age: 59
       }
     ];
+    localStorage.setItem("personas", JSON.stringify(this.personas));
   }
 };
 </script>

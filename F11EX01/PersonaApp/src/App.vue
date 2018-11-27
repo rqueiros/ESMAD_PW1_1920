@@ -1,11 +1,10 @@
 <template>
   <div id="app">
+    <h1>PersonaApp</h1>
     <div id="nav">
-      <router-link to="/">Home</router-link>|
-      <router-link to="/about">About</router-link>|
-      <router-link to="/contacts">Contacts</router-link>
+      <!--renders the component Home since it matches with route "/" -->
+      <router-view></router-view>
     </div>
-    <router-view/>
   </div>
 </template>
 

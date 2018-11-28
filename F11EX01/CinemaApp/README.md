@@ -15,7 +15,9 @@ It render in a table all the actors from the LocalStorage.
 For each row it create a router-link (button) to access to the ActorDetail view.
 
 ## ActorDetail view
-To finish soon...
+Has two children components: ActorDetailProfile and actorDetailMovies
+
+Has its own router-vies to render its childrens
 
 
 

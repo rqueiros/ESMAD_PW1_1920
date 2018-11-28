@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <!--Renders the navbar-->
+    <!-- Renders the navbar -->
     <NavBar/>
     <!-- Renders the welcome message -->
     <div class="container" style="margin-top:80px">
@@ -19,4 +19,3 @@ export default {
   }
 };
 </script>
-

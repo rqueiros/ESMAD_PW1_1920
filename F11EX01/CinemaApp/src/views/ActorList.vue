@@ -1,7 +1,7 @@
 <template>
   <div class="actor-list">
-    <!--Renders the navbar-->
-    <NavBar/>
+    <!-- Renders the navbar -->
+    <NavBar />
     <!-- Container for render all the remaining components -->
     <div class="container" style="margin-top:80px">
       <h2>Actor List</h2>
@@ -16,15 +16,16 @@
         </thead>
         <tbody>
           <tr v-for="actor in actors" :key="actor.id">
-            <td>{{actor.id}}</td>
-            <td>{{actor.name}}</td>
-            <td>{{actor.nationality}}</td>
+            <td>{{ actor.id }}</td>
+            <td>{{ actor.name }}</td>
+            <td>{{ actor.nationality }}</td>
             <td>
               <router-link
-                :to="{name: 'actor-detail', params:{actorId: actor.id}}"
+                :to="{ name: 'actor-detail', params: { actorId: actor.id } }"
                 tag="button"
-                :class="{'btn':true, 'btn-danger':true, 'btn-sm': true}"
-              >more info</router-link>
+                :class="{ btn: true, 'btn-danger': true, 'btn-sm': true }"
+                >more info</router-link
+              >
             </td>
           </tr>
         </tbody>
@@ -46,4 +47,3 @@ export default {
   }
 };
 </script>
-

@@ -1,10 +1,14 @@
 <template>
   <div class="actor-list">
-    <!--Renders the navbar-->
+    <!-- Renders the navbar -->
     <NavBar/>
     <!-- Container for render all the remaining components -->
     <div class="container" style="margin-top:80px">
-      <h2>Actor Details: {{getActor($route.params.actorId).name}}</h2>
+      <h2>Actor Details: {{ getActor($route.params.actorId).name }}</h2>
+
+      <router-link :to="{name:'actor-detail-profile'}">PROFILE</router-link>&nbsp;|&nbsp;
+      <router-link :to="{name:'actor-detail-movies'}">MOVIES</router-link>
+      <router-view></router-view>
     </div>
   </div>
 </template>
@@ -27,4 +31,3 @@ export default {
   }
 };
 </script>
-

@@ -1,29 +1,20 @@
 # CinemaApp
 
-## Project setup
-```
-yarn install
-```
+## Home view
+It includes two components: NavBar And Welcome
+The NabBar component renders a fixed top navbar with two router-links for the views: ActorList and Contacts
+The Welcome component renders a welcome message
 
-### Compiles and hot-reloads for development
-```
-yarn run serve
-```
+## ActorList view
+It includes a top component (NavBar)
+It render in a table all the actors from the LocalStorage.
+For each row it create a router-link (button) to access to the ActorDetail view
 
-### Compiles and minifies for production
-```
-yarn run build
-```
+## ActorDetail view
+To finish soon...
 
-### Run your tests
-```
-yarn run test
-```
 
-### Lints and fixes files
-```
-yarn run lint
-```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+
+## Some notes
+This apprach needs a store [VueX](https://vuex.vuejs.org/guide/).

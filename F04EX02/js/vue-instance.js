@@ -19,13 +19,6 @@ const vm = new Vue({
             return this.schools.filter(
                  (school)  => school.startsWith(this.char) 
             )
-        },
-        filterSchools2() {
-            return this.schools.filter(
-                 function(school)  {
-                    return school.startsWith(this.char) 
-                }
-            )
         }
     }
 })

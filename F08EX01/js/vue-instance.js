@@ -79,17 +79,13 @@ const vm = new Vue({
     methods: {
         // Get last castle id
         getLastId() {
-
-            if (this.castles.length > 0)
-                return this.castles[this.castles.length - 1].id
-            else
-                return 0
+            return this.castles.length ? this.castles[this.castles.length - 1].id : 0
         },
 
         // Add castle
         addCastle() {
             this.castles.push({
-                id: Number(this.getLastId()) + 1,
+                id: this.getLastId() + 1,
                 name: this.form.name,
                 link: this.form.link
             })
@@ -103,10 +99,10 @@ const vm = new Vue({
             this.form.editName = castle.name
             this.form.editLink = castle.link
         },
-
+        // Update castle based on its ID
         updateCastle() {
             this.castles.map(
-                (castle) => {
+                castle => {
                     if (castle.id === this.form.editId) {
                         castle.name = this.form.editName
                         castle.link = this.form.editLink
@@ -120,10 +116,10 @@ const vm = new Vue({
         viewCastle(id) {
             this.form.link =
                 this.castles.filter(
-                    (castle) => castle.id === id)[0].link
+                    castle => castle.id === id)[0].link
             document.getElementById("viewCastleDialog").showModal()
-
         },
+
         // Close view of the castle
         closeViewCastle() {
             document.getElementById("viewCastleDialog").close()
@@ -153,11 +149,9 @@ const vm = new Vue({
                     // Remove the word 'Castelo' from the castle's name
                     const str = "Castelo"
                     this.castles = this.castles.map(
-                        (castle) => {
-                            if (castle.name.indexOf(str) !== -1) {
-                                castle.name = castle.name.replace(str, "")
-                            }
-                            return castle
+                        castle => {
+                            castle.name = castle.name.replace(str, "")
+                             return castle
                         }
                     )
                     break;
@@ -165,19 +159,19 @@ const vm = new Vue({
                     // Calculate the average date for the castles's creation
                     const averageDate = this.castles.reduce(
                         (sum, cur) => sum + cur.year, 0) / this.castles.length
-                    console.log(averageDate)
+                    alert(`Average date creation: ${averageDate}`)
                     break;
                 case "eiii":
                     // See if there is any castle which includes the word 'Marvão' in his name
                     const existMarvaoCastle = this.castles.some(
-                        (castle) => castle.name.includes("Marvão"))
-                    console.log(existMarvaoCastle)
+                        castle => castle.name.includes("Marvão"))
+                    alert(`Is there a Marvão castle? ${existMarvaoCastle}`)
                     break;
                 case "eiv":
                     // Get all castles that start by the letter A
                     const letter = "A"
                     console.log(this.castles.filter(
-                        (castle) => castle.name.startsWith(letter)))
+                        castle => castle.name.startsWith(letter)))
                     break;
                 case "ev":
                     // Verify that all castles have the link fulfilled                    

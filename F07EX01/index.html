@@ -20,11 +20,12 @@
 
 <body>
     <h1>MyTravels</h1>
-    <div id="intro">
+    <div id="app">
+        <form v-on:submit.prevent="addTravel">
         <!-- CONTINENT -->
-        <label for="txtContinent">CONTINENT:</label>
+        <label for="sltContinent">CONTINENTE:</label>
         <select id="sltContinent" v-model="continent">
-            <option value="all">ALL</option>
+            <option value="todos">TODOS</option>
             <option value="europa">EUROPA</option>
             <option value="africa">ÁFRICA</option>
             <option value="asia">ÁSIA</option>
@@ -33,42 +34,43 @@
         </select>
 
         <!-- COUNTRY -->
-        <label for="txtCountry">COUNTRY:</label>
+        <label for="txtCountry">PAÍS:</label>
         <input id="txtCountry" type="text" v-model="country">
         <br><br>
 
         <!-- CITIES -->
-        <label for="txtCities">CITIES:</label>
+        <label for="txtCities">CIDADES:</label>
         <input id="txtCities" type="text" v-model="cities" placeholder="please separate the cities with a comma">
         <br><br>
         <!-- DESCRIPTION -->
-        <label for="txtDesc">DESCRIPTION:</label>
+        <label for="txtDesc">DESCRIÇÃO:</label>
         <textarea id="txtDesc" v-model="description"></textarea>
         <br><br>
         <!-- START DATE -->
-        <label for="txtStartDate">START DATE:</label>
+        <label for="txtStartDate">DATA DE PARTIDA:</label>
         <input id="txtStartDate" type="date" v-model="startDate">
         <br><br>
         <!-- END DATE -->
-        <label for="txtEndDate">END DATE:</label>
+        <label for="txtEndDate">DATA DE REGRESSO:</label>
         <input id="txtEndDate" type="date" v-model="endDate">
         <br><br>
         <!-- TYPE -->
         <input v-model="type" id="rdHolidays" type="radio" value="holidays">
-        <label for="rdHolidays">HOLIDAYS</label>
+        <label for="rdHolidays">FÉRIAS</label>
         <input v-model="type" id="rdBusiness" type="radio" value="business">
-        <label for="rdBusiness">BUSINESS</label>
+        <label for="rdBusiness">NEGÓCIOS</label>
         <br><br>
         <!-- LINK -->
-        <label for="txtPhoto">PHOTO:</label>
-        <input id="txtPhoto" type="text" v-model="photo">
+        <label for="txtPhoto">FOTO:</label>
+        <input id="txtPhoto" type="url" v-model="photo">
 
         <br><br>
-        <button v-on:click="addTravel">ADD TRAVEL</button>
-        <button>FIND TRAVEL</button>
+        <input type="submit" value="ADICIONAR VIAGEM"></input>
+        <button>ENCONTRAR VIAGEM</button>
+    </form>
         <br>
 
-        <span v-if="this.travels.length===0">NO TRAVELS</span>
+        <span v-if="this.travels.length===0">SEM VIAGENS REGISTADAS</span>
         <div v-else>
             <hr>
             <!-- FILTERS -->
@@ -82,17 +84,17 @@
             <label for="txtFilterEndDate">END DATE:</label>
             <input id="txtFilterEndDate" type="date" v-model.lazy="filterEndDate">
             <hr>
-            <span>LIST OF TRAVELS</span>
-            <button @click="orderByCountry">ORDER BY COUNTRY</button>
-            <button @click="orderByDate">ORDER BY START DATE</button>
+            <span>LISTA DE VIAGENS</span>
+            <button @click="orderByCountry">ORDENAR POR PAÍS</button>
+            <button @click="orderByDate">ORDENAR POR DATA</button>
             <hr>
             <table>
                 <tr>
                     <th>#</th>
-                    <th>CONTINENT</th>
-                    <th>COUNTRY</th>
-                    <th>TYPE</th>
-                    <th>ACTIONS</th>
+                    <th>CONTINENTE</th>
+                    <th>PAÍS</th>
+                    <th>TIPO</th>
+                    <th>AÇÕES</th>
                 </tr>
                 <tr v-for="travel in filteredTravels">
                     <td>{{travel.id}}</td>
@@ -100,8 +102,8 @@
                     <td>{{travel.country}}</td>
                     <td>{{travel.type}}</td>
                     <td>
-                        <button v-on:click="editTravel(travel.id)">EDIT</button>
-                        <button v-on:click="removeTravel(travel.id)">REMOVE</button>
+                        <button v-on:click="editTravel(travel.id)">EDITAR</button>
+                        <button v-on:click="removeTravel(travel.id)">REMOVER</button>
 
                     </td>
                 </tr>

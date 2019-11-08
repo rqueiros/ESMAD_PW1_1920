@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Formulário de Candidatura</title>
+    <script src="js/vue.js"></script>
+    
+</head>
+
+<body>
+    <div id="intro">
+        <h1>Formulário de Candidatura</h1>
+        <form @submit.prevent="getReport()">
+            <!-- NAME -->
+            <label for="txtName">NOME:</label>
+            <input id="txtName" v-model="name">
+            <br>
+            <!-- AGE -->
+            <label for="txtAge">IDADE:</label>
+            <input id="txtAge" v-model.number="age">
+            <br>
+            <!-- GENRE -->
+            <label for="rdGenre">GÉNERO:</label>
+            <input id="rdGenreFem" type="radio" v-model="genre" value="feminino">Feminino
+            <input id="rdGenreMas" type="radio" v-model="genre" value="masculino">Masculino
+            <br>
+            <!-- DEGREE -->
+            <label for="sltDegree">LICENCIATURA:</label>
+            <select id="sltDegree" v-model="degree">
+                <option value="">SEM LICENCIATURA</option>
+                <option value="informática">INFORMÁTICA</option>
+                <option value="redes">REDES</option>
+                <option value="web">WEB</option>
+            </select>
+            <br>
+            <!-- LANGUAGES -->
+            <label for="chkLanguages">LINGUAGENS:</label>
+            <input id="chkC" type="checkbox" value="C" v-model="languages">C
+            <input id="chkC" type="checkbox" value="C#" v-model="languages">C#
+            <input id="chkC" type="checkbox" value="Java" v-model="languages">JAVA
+            <input id="chkC" type="checkbox" value="JavaScript" v-model="languages">JAVASCRIPT
+            <input id="chkC" type="checkbox" value="Phyton" v-model="languages">PHYTON
+            <input id="chkC" type="checkbox" value="Kotlin" v-model="languages">KOTLIN
+            <br>
+            <!-- MOTIVATION -->
+            <label for="txtMotivation">MOTIVAÇÃO:</label><br>
+            <textarea id="txtMotivation" cols="30" rows="10" v-model="motivation"></textarea>
+            <br>
+            <input type="submit" value="SUBMETER" >
+
+        </form>
+        <dialog id="dlgReport"></dialog>
+    </div>
+    <script src="js/vue-instance.js"></script>
+</body>
+
+</html>

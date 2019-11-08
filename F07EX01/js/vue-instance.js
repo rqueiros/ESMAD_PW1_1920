@@ -1,8 +1,8 @@
 const vm = new Vue({
-    el: "#intro",
+    el: "#app",
     data: {
         id: 0,
-        continent: "all",
+        continent: "todos",
         country: "",
         cities: "",
         description: "",
@@ -15,20 +15,24 @@ const vm = new Vue({
         filterEndDate: "",
         travels: []
     },
-    created() {       
-        // Get travels from the localstorage
-        if (localStorage.getItem("travels")) {
-            this.travels = JSON.parse(localStorage.getItem("travels"))
-        }
+    created() {
+        if(localStorage.getItem("travels")) {
+            this.travels = 
+                JSON.parse(localStorage.getItem("travels"))
+        }        
     },
     destroyed() {
-        localStorage.setItem("travels",JSON.stringify(this.travels))
+        localStorage.setItem("travels", JSON.stringify(this.travels))
     },
     methods: {
          
         // Get last travel id
         getLastId() {
-            return this.travels.length ? this.travels[this.travels.length - 1].id : 0
+            if(this.travels.length) {
+                return this.travels[this.travels.length - 1].id
+            } else {
+                return 0
+            }            
         },
         // Add travel
         addTravel() {
@@ -49,14 +53,23 @@ const vm = new Vue({
             const index = this.travels.findIndex(
                 (travel) => travel.id === id
             )
-            this.travels[index].country = prompt("New country?")            
+            this.travels[index].country = prompt("New country?", this.travels[index].country)            
         },
+
+
+
+
         // Remove travel based on its ID
         removeTravel(id) {
-            this.travels = this.travels.filter(
-                (travel) => travel.id !== id
-            )
+            if(confirm("Deseja mesmo remover a viagem?")) {
+                this.travels = this.travels.filter(
+                    travel => travel.id !== id
+                )
+            }            
         },
+
+
+
 
         // Order by country
         compareCountry(a, b) {
@@ -64,9 +77,15 @@ const vm = new Vue({
             if(a.country > b.country) return 1
             else return 0
         },
+        
+        
         orderByCountry() {
-            this.travels.sort(this.compareCountry)
+            this.travels = this.travels.sort(this.compareCountry)
         },
+
+
+
+
         // Order by start date
         compareDate(a, b) {
             if(a.startDate < b.startDate) return -1
@@ -74,7 +93,7 @@ const vm = new Vue({
             else return 0
         },
         orderByDate() {
-            this.travels.sort(this.compareDate)
+            this.travels = this.travels.sort(this.compareDate)
         }
     },
     computed: {
@@ -109,4 +128,5 @@ const vm = new Vue({
 
 window.onunload = function () {
     vm.$destroy()
+    
 }
